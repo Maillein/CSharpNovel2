@@ -8,6 +8,9 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="CSharpNovel2.csproj" t="IncludeRecursive" />
         <e p="Define.cs" t="Include" />
+        <e p="Image" t="Include">
+          <e p="Image.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">

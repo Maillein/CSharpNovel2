@@ -12,7 +12,7 @@ namespace CSharpNovel2.System
         {
             var looper = new Looper();
 
-            while (SDL.SDL_RenderClear(GameCore.GetRenderer()) == 0)
+            while (SDL.SDL_RenderClear(GameCore.Renderer) == 0)
             {
                 SDL.SDL_PollEvent(out GameCore.GameEvent);
                 if (GameCore.GameEvent.type == SDL.SDL_EventType.SDL_QUIT)
@@ -24,7 +24,7 @@ namespace CSharpNovel2.System
                 {
                     break;
                 }
-                SDL.SDL_RenderPresent(GameCore.GetRenderer());
+                SDL.SDL_RenderPresent(GameCore.Renderer);
             }
         }
     }
