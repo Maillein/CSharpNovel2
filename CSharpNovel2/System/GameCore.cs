@@ -34,7 +34,12 @@ namespace CSharpNovel2.System
                 return false;
             }
 
-            _window = SDL.SDL_CreateWindow("Title", SDL.SDL_WINDOWPOS_CENTERED, SDL.SDL_WINDOWPOS_CENTERED, 1280, 720,
+            _window = SDL.SDL_CreateWindow(
+                "Title", 
+                SDL.SDL_WINDOWPOS_CENTERED, 
+                SDL.SDL_WINDOWPOS_CENTERED, 
+                Define.WindowWidth, 
+                Define.WindowHeight,
                 SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
 
             if (_window == IntPtr.Zero)

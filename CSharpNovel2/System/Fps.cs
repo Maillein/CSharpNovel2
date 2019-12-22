@@ -70,7 +70,7 @@ namespace CSharpNovel2.System
             }
 
             var sfps = _fps.ToString("F2");
-            Text.Print( 1233, 698, sfps, 16, new SDL.SDL_Color {r = 200, g = 200, b = 200, a = 0});
+            Text.Print( Define.WindowWidth - 47, Define.WindowHeight - 22, sfps, 16, new SDL.SDL_Color {r = 200, g = 200, b = 200, a = 0});
         }
     }
 }
