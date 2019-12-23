@@ -5,7 +5,7 @@ namespace CSharpNovel2.System
     public static class Mouse
     {
         private const int ButtonNum = 8;
-        
+
         private static int _x, _y;
         private static readonly int[] PressingCount = new int[ButtonNum];
         private static readonly int[] ReleasingCount = new int[ButtonNum];
@@ -15,7 +15,7 @@ namespace CSharpNovel2.System
         public static void Update()
         {
             var state = SDL.SDL_GetMouseState(out _x, out _y);
-            
+
             // マウスが左クリックされているかどうかチェック
             if ((state & SDL.SDL_BUTTON_LMASK) != 0)
             {
@@ -35,7 +35,7 @@ namespace CSharpNovel2.System
 
                 ReleasingCount[SDL.SDL_BUTTON_LEFT]++;
             }
-            
+
             // マウスが真ん中クリックされているかどうかチェック
             if ((state & SDL.SDL_BUTTON_MMASK) != 0)
             {
@@ -55,7 +55,7 @@ namespace CSharpNovel2.System
 
                 ReleasingCount[SDL.SDL_BUTTON_MIDDLE]++;
             }
-            
+
             // マウスが右クリックされているかどうかチェック
             if ((state & SDL.SDL_BUTTON_RMASK) != 0)
             {
@@ -97,9 +97,6 @@ namespace CSharpNovel2.System
             return ReleasingCount[buttonCode];
         }
 
-        public static SDL.SDL_Point GetPosition()
-        {
-            return new SDL.SDL_Point {x = _x, y = _y};
-        }
+        public static SDL.SDL_Point GetPosition() { return new SDL.SDL_Point {x = _x, y = _y}; }
     }
 }

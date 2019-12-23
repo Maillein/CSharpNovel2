@@ -33,7 +33,7 @@ namespace CSharpNovel2.Image
             UsedHandle.Add(ret);
             return ret;
         }
-        
+
         private static SDL.SDL_Rect GetSrcRect(int handle)
         {
             return !Images.ContainsKey(handle) ? new SDL.SDL_Rect() : Images[handle].GetSrcRect();
@@ -47,12 +47,12 @@ namespace CSharpNovel2.Image
                 return HandleDictionary[fileName];
             }
 
-            var _nextHandle = FindHandle();
-            Images[_nextHandle] = new Image(fileName);
-            ImagesCount[_nextHandle] = 1;
-            HandleDictionary[fileName] = _nextHandle;
-            NameDictionary[_nextHandle] = fileName;
-            return _nextHandle;
+            var nextHandle = FindHandle();
+            Images[nextHandle] = new Image(fileName);
+            ImagesCount[nextHandle] = 1;
+            HandleDictionary[fileName] = nextHandle;
+            NameDictionary[nextHandle] = fileName;
+            return nextHandle;
         }
 
         public static int LoadDiv(string fileName, int numOfW, int numOfH)
@@ -62,14 +62,14 @@ namespace CSharpNovel2.Image
                 ImagesCount[HandleDictionary[fileName]]++;
                 return HandleDictionary[fileName];
             }
-            
-            var _nextHandle = FindHandle();
-            Images[_nextHandle] = new Image(fileName);
-            ImagesCount[_nextHandle] = 1;
-            DivImgWh[_nextHandle] = new Tuple<int, int>(numOfW, numOfH);
-            HandleDictionary[fileName] = _nextHandle;
-            NameDictionary[_nextHandle] = fileName;
-            return _nextHandle;
+
+            var nextHandle = FindHandle();
+            Images[nextHandle] = new Image(fileName);
+            ImagesCount[nextHandle] = 1;
+            DivImgWh[nextHandle] = new Tuple<int, int>(numOfW, numOfH);
+            HandleDictionary[fileName] = nextHandle;
+            NameDictionary[nextHandle] = fileName;
+            return nextHandle;
         }
 
         public static bool Render(int handle, int x, int y)
@@ -179,7 +179,7 @@ namespace CSharpNovel2.Image
             NameDictionary.Remove(handle);
             DivImgWh.Remove(handle);
             UsedHandle.Remove(handle);
-            
+
             return true;
         }
     }

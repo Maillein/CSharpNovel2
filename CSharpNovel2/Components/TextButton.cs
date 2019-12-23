@@ -5,6 +5,7 @@ using SDL2;
 namespace CSharpNovel2.Components
 {
     public delegate bool OnClick();
+
     public class TextButton : IButton
     {
         private SDL.SDL_Rect _clipRect;
@@ -12,7 +13,8 @@ namespace CSharpNovel2.Components
         private readonly IntPtr _notMouseOverTexture;
         private readonly OnClick _onClick;
 
-        public TextButton(int x, int y, string text, OnClick onClick, SDL.SDL_Color mouseOverColor, SDL.SDL_Color notMouseOverColor, int size)
+        public TextButton(int x, int y, string text, OnClick onClick, SDL.SDL_Color mouseOverColor,
+            SDL.SDL_Color notMouseOverColor, int size)
         {
             var font = GameCore.GetFont(size);
             _onClick = onClick;
@@ -26,11 +28,8 @@ namespace CSharpNovel2.Components
             SDL.SDL_FreeSurface(mouseOverImg);
             SDL.SDL_FreeSurface(notMouseOverImg);
         }
-        
-        public bool Update()
-        {
-            return IsClicked() ? _onClick() : IsClicked();
-        }
+
+        public bool Update() { return IsClicked() ? _onClick() : IsClicked(); }
 
         public bool Render()
         {
@@ -43,15 +42,10 @@ namespace CSharpNovel2.Components
         public bool IsMouseOvered()
         {
             var mousePos = Mouse.GetPosition();
-            return _clipRect.x <= mousePos.x 
-                   && mousePos.x <= _clipRect.x + _clipRect.w 
-                   && _clipRect.y <= mousePos.y 
-                   && mousePos.y <= _clipRect.y + _clipRect.h;
+            return    _clipRect.x <= mousePos.x && mousePos.x <= _clipRect.x + _clipRect.w 
+                   && _clipRect.y <= mousePos.y && mousePos.y <= _clipRect.y + _clipRect.h;
         }
 
-        public bool IsClicked()
-        {
-            return IsMouseOvered() && Mouse.GetPressingCount(SDL.SDL_BUTTON_LEFT) == 1;
-        }
+        public bool IsClicked() { return IsMouseOvered() && Mouse.GetPressingCount(SDL.SDL_BUTTON_LEFT) == 1; }
     }
 }

@@ -46,7 +46,7 @@ namespace CSharpNovel2.System
             }
 
             const int shouldTookTime = (int) (1000.0 / 60.0 * FPS);
-            var actuallyTookTime = (int)(SDL.SDL_GetTicks() - _list[0]);
+            var actuallyTookTime = (int) (SDL.SDL_GetTicks() - _list[0]);
             var waitTime = shouldTookTime - actuallyTookTime;
             waitTime = waitTime > 0 ? waitTime : 0;
             return (uint) waitTime;
@@ -70,7 +70,8 @@ namespace CSharpNovel2.System
             }
 
             var sfps = _fps.ToString("F2");
-            Text.Print( Define.WindowWidth - 47, Define.WindowHeight - 22, sfps, 16, new SDL.SDL_Color {r = 200, g = 200, b = 200, a = 0});
+            Text.Print(Define.WindowWidth - 47, Define.WindowHeight - 22, sfps, 16,
+                new SDL.SDL_Color {r = 200, g = 200, b = 200, a = 0});
         }
     }
 }

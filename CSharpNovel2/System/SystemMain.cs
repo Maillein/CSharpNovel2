@@ -7,7 +7,7 @@ namespace CSharpNovel2.System
     public sealed class SystemMain
     {
         public static bool Initialize() { return GameCore.Initialize(); }
-        
+
         public static bool FinalizeGame() { return GameCore.FinalizeGame(); }
 
         public static void MainLoop()
@@ -38,7 +38,7 @@ namespace CSharpNovel2.System
 
                         mask.Render(0, 0);
                         window.Render(480, 258);
-                        Text.Print(530, 300, "ゲームを終了しますか？", 24, new SDL.SDL_Color{r = 255, g = 255, b = 255, a = 0});
+                        Text.Print(530, 300, "ゲームを終了しますか？", 24, new SDL.SDL_Color {r = 255, g = 255, b = 255, a = 0});
                         yes.Render();
                         no.Render();
                         SDL.SDL_RenderPresent(GameCore.Renderer);
@@ -56,6 +56,7 @@ namespace CSharpNovel2.System
                 {
                     break;
                 }
+
                 SDL.SDL_RenderPresent(GameCore.Renderer);
             }
         }

@@ -12,17 +12,14 @@ namespace CSharpNovel2.Title
         private readonly int _menuMaskHandle;
         private readonly Dictionary<string, TextButton> _buttons = new Dictionary<string, TextButton>();
 
-        private void Free()
-        {
-            ImagePool.Free(_menuMaskHandle);
-        }
-        
+        private void Free() { ImagePool.Free(_menuMaskHandle); }
+
         private bool OnStartClick()
         {
             // Console.WriteLine("Start was clicked.");
             var parameter = new Parameter();
             parameter.Set("key", 123);
-            implSceneChanged.OnSceneChanged(EScene.Game, parameter, false);
+            ImplSceneChanged.OnSceneChanged(EScene.Game, parameter, false);
             Free();
             return true;
         }
@@ -50,7 +47,7 @@ namespace CSharpNovel2.Title
 
                 mask.Render(0, 0);
                 window.Render(480, 258);
-                Text.Print(530, 300, "ゲームを終了しますか？", 24, new SDL.SDL_Color{r = 255, g = 255, b = 255, a = 0});
+                Text.Print(530, 300, "ゲームを終了しますか？", 24, new SDL.SDL_Color {r = 255, g = 255, b = 255, a = 0});
                 yes.Render();
                 no.Render();
                 SDL.SDL_RenderPresent(GameCore.Renderer);
@@ -58,6 +55,7 @@ namespace CSharpNovel2.Title
 
             return !flag;
         }
+
         public TitleScene(IOnSceneChangeListener impl, Parameter parameter) : base(impl, parameter)
         {
             _menuMaskHandle = ImagePool.Load("title_menu_mask.png");
@@ -75,6 +73,7 @@ namespace CSharpNovel2.Title
             {
                 if (key != "quit") value.Update();
             }
+
             return !_buttons["quit"].Update(); // <- なんでうまくいくの？
         }
 

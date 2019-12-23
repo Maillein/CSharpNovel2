@@ -25,7 +25,7 @@ namespace CSharpNovel2.Image
             }
             else
             {
-                SDL.SDL_QueryTexture(_texture, out var format, out var access, out _width, out _height);
+                SDL.SDL_QueryTexture(_texture, out _, out _, out _width, out _height);
             }
         }
 
