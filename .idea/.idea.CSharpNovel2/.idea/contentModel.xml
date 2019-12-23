@@ -14,6 +14,9 @@
         </e>
         <e p="CSharpNovel2.csproj" t="IncludeRecursive" />
         <e p="Define.cs" t="Include" />
+        <e p="Game" t="Include">
+          <e p="GameScene.cs" t="Include" />
+        </e>
         <e p="Image" t="Include">
           <e p="Image.cs" t="Include" />
           <e p="ImagePool.cs" t="Include" />

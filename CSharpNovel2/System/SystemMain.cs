@@ -20,8 +20,8 @@ namespace CSharpNovel2.System
                 if (GameCore.GameEvent.type == SDL.SDL_EventType.SDL_QUIT)
                 {
                     bool flag = false;
-                    var yes = new TextButton(540, 390, "はい", () => true, new SDL.SDL_Color{r = 0, g = 255, b = 255, a = 0}, new SDL.SDL_Color{r = 255, g = 255, b = 255, a = 128}, 24);
-                    var no = new TextButton(720, 390, "いいえ", () => true, new SDL.SDL_Color{r = 0, g = 255, b = 255, a = 0}, new SDL.SDL_Color{r = 255, g = 255, b = 255, a = 128}, 24);
+                    var yes = new TextButton(540, 390, "はい", () => true, Define.DeepSkyBlue, Define.WhiteTranslucent, 24);
+                    var no = new TextButton(720, 390, "いいえ", () => true, Define.DeepSkyBlue, Define.WhiteTranslucent, 24);
                     var mask = new Image.Image("window_gray_mask.png");
                     var window = new Image.Image("dialog_window.png");
                     while (SDL.SDL_RenderClear(GameCore.Renderer) == 0)

@@ -5,9 +5,9 @@ namespace CSharpNovel2.System
 {
     public abstract class AbstractScene
     {
-        private IOnSceneChangeListener _implSceneChanged;
+        protected readonly IOnSceneChangeListener implSceneChanged;
 
-        protected AbstractScene(IOnSceneChangeListener impl, Parameter parameter) { _implSceneChanged = impl; }
+        protected AbstractScene(IOnSceneChangeListener impl, Parameter parameter) { implSceneChanged = impl; }
         public abstract bool Update();
         public abstract void Render();
     }
