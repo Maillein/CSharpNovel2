@@ -1,8 +1,8 @@
 ﻿namespace CSharpNovel2.Scene
 {
-    public enum eScene
+    public enum EScene
     {
-        Title,
-        Game,
+        TITLE,
+        GAME,
     }
 }

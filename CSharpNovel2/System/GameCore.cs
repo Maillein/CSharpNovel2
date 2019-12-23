@@ -1,31 +1,49 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using SDL2;
 
 namespace CSharpNovel2.System
 {
     public static class GameCore
     {
-        private static IntPtr _window = IntPtr.Zero;
-        private static IntPtr _renderer = IntPtr.Zero;
+        public static IntPtr Window { get; private set; } = IntPtr.Zero;
+        public static IntPtr Renderer { get; private set; } = IntPtr.Zero;
+
         public static SDL.SDL_Event GameEvent = new SDL.SDL_Event();
 
-        public static IntPtr RoundedMgenplus4  = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus8  = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus12 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus16 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus18 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus20 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus24 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus36 = IntPtr.Zero;
+        public static IntPtr RoundedMgenplus4 { get; private set; } = IntPtr.Zero;
+        public static IntPtr RoundedMgenplus8 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus12 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus16 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus18 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus20 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus24 { get; private set; } = IntPtr.Zero;
+        public static IntPtr RoundedMgenplus36 { get; private set; }= IntPtr.Zero;
 
-        public static int FontHeight4;
-        public static int FontHeight8;
-        public static int FontHeight12;
-        public static int FontHeight16;
-        public static int FontHeight18;
-        public static int FontHeight20;
-        public static int FontHeight24;
-        public static int FontHeight36;
+        public static IntPtr GetFont(int size)
+        {
+            return size switch
+            {
+                4 => RoundedMgenplus4,
+                8 => RoundedMgenplus8,
+                12 => RoundedMgenplus12,
+                16 => RoundedMgenplus16,
+                18 => RoundedMgenplus18,
+                20 => RoundedMgenplus20,
+                24 => RoundedMgenplus24,
+                36 => RoundedMgenplus36,
+                _ => RoundedMgenplus20,
+            };
+        }
+
+        public static int FontHeight4 { get; private set; }
+        public static int FontHeight8 { get; private set; }
+        public static int FontHeight12 { get; private set; }
+        public static int FontHeight16 { get; private set; }
+        public static int FontHeight18 { get; private set; }
+        public static int FontHeight20 { get; private set; }
+        public static int FontHeight24 { get; private set; }
+        public static int FontHeight36 { get; private set; }
         public static bool Initialize()
         {
             if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) < 0)
@@ -33,20 +51,25 @@ namespace CSharpNovel2.System
                 Console.Error.WriteLine($"Unable to initialize. Error: {SDL.SDL_GetError()}");
                 return false;
             }
-
-            _window = SDL.SDL_CreateWindow("Title", SDL.SDL_WINDOWPOS_CENTERED, SDL.SDL_WINDOWPOS_CENTERED, 1280, 720,
+            
+            Window = SDL.SDL_CreateWindow(
+                "Title", 
+                SDL.SDL_WINDOWPOS_CENTERED, 
+                SDL.SDL_WINDOWPOS_CENTERED, 
+                Define.WindowWidth, 
+                Define.WindowHeight,
                 SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
 
-            if (_window == IntPtr.Zero)
+            if (Window == IntPtr.Zero)
             {
                 Console.Error.WriteLine($"Unable to create window. Error: {SDL.SDL_GetError()}");
                 return false;
             }
-
-            _renderer = SDL.SDL_CreateRenderer(_window, -1,
+            
+            Renderer = SDL.SDL_CreateRenderer(Window, -1,
                 SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL.SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
 
-            if (_renderer == IntPtr.Zero)
+            if (Renderer == IntPtr.Zero)
             {
                 Console.Error.WriteLine($"Unable to create renderer. Error: {SDL.SDL_GetError()}");
                 return false;
@@ -83,19 +106,14 @@ namespace CSharpNovel2.System
             FontHeight24 = SDL_ttf.TTF_FontHeight(RoundedMgenplus24);
             FontHeight36 = SDL_ttf.TTF_FontHeight(RoundedMgenplus36);
 
-            SDL.SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 0);
+            SDL.SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
             
             return true;
         }
-
-        public static IntPtr GetWindow() { return _window; }
-
-        public static IntPtr GetRenderer() { return _renderer; }
-
         public static bool FinalizeGame()
         {
-            SDL.SDL_DestroyRenderer(_renderer);
-            SDL.SDL_DestroyWindow(_window);
+            SDL.SDL_DestroyRenderer(Renderer);
+            SDL.SDL_DestroyWindow(Window);
             SDL.SDL_Quit();
             return true;
         }

@@ -2,7 +2,7 @@
 {
     public interface IOnSceneChangeListener
     {
-        void OnSceneChanged(eScene scene, Parameter parameter, bool stackClear);
+        void OnSceneChanged(EScene scene, Parameter parameter, bool stackClear);
         void PopScene();
     }
 }
