@@ -3,15 +3,15 @@ using SDL2;
 
 namespace CSharpNovel2.System
 {
-    public class Keyboard
+    public static class Keyboard
     {
-        private const int Keynum = 1024;
-        private static readonly int[] PressingCount = new int[Keynum];
-        private static readonly int[] ReleasingCount = new int[Keynum];
+        private const int KeyNum = 1024;
+        private static readonly int[] PressingCount = new int[KeyNum];
+        private static readonly int[] ReleasingCount = new int[KeyNum];
 
-        private static bool IsAvailableCode(int keyCode) { return 0 <= keyCode && keyCode <= Keynum; }
+        private static bool IsAvailableCode(int keyCode) { return 0 <= keyCode && keyCode <= KeyNum; }
 
-        public static bool Update()
+        public static void Update()
         {
             var nowKeyStatesPtr = SDL.SDL_GetKeyboardState(out var size);
             var nowKeyStates = new byte[size];
@@ -37,8 +37,6 @@ namespace CSharpNovel2.System
                     ReleasingCount[i]++;
                 }
             }
-
-            return true;
         }
 
         public static int GetPressingCount(int keyCode)

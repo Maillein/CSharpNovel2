@@ -6,6 +6,12 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="CSharpNovel2" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Components" t="Include">
+          <e p="IButton.cs" t="Include" />
+          <e p="IClickable.cs" t="Include" />
+          <e p="IComponents.cs" t="Include" />
+          <e p="TextButton.cs" t="Include" />
+        </e>
         <e p="CSharpNovel2.csproj" t="IncludeRecursive" />
         <e p="Define.cs" t="Include" />
         <e p="Image" t="Include">

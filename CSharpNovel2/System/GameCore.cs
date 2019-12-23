@@ -11,23 +11,39 @@ namespace CSharpNovel2.System
 
         public static SDL.SDL_Event GameEvent = new SDL.SDL_Event();
 
-        public static IntPtr RoundedMgenplus4  = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus8  = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus12 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus16 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus18 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus20 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus24 = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus36 = IntPtr.Zero;
+        public static IntPtr RoundedMgenplus4 { get; private set; } = IntPtr.Zero;
+        public static IntPtr RoundedMgenplus8 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus12 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus16 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus18 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus20 { get; private set; }= IntPtr.Zero;
+        public static IntPtr RoundedMgenplus24 { get; private set; } = IntPtr.Zero;
+        public static IntPtr RoundedMgenplus36 { get; private set; }= IntPtr.Zero;
 
-        public static int FontHeight4;
-        public static int FontHeight8;
-        public static int FontHeight12;
-        public static int FontHeight16;
-        public static int FontHeight18;
-        public static int FontHeight20;
-        public static int FontHeight24;
-        public static int FontHeight36;
+        public static IntPtr GetFont(int size)
+        {
+            return size switch
+            {
+                4 => RoundedMgenplus4,
+                8 => RoundedMgenplus8,
+                12 => RoundedMgenplus12,
+                16 => RoundedMgenplus16,
+                18 => RoundedMgenplus18,
+                20 => RoundedMgenplus20,
+                24 => RoundedMgenplus24,
+                36 => RoundedMgenplus36,
+                _ => RoundedMgenplus20,
+            };
+        }
+
+        public static int FontHeight4 { get; private set; }
+        public static int FontHeight8 { get; private set; }
+        public static int FontHeight12 { get; private set; }
+        public static int FontHeight16 { get; private set; }
+        public static int FontHeight18 { get; private set; }
+        public static int FontHeight20 { get; private set; }
+        public static int FontHeight24 { get; private set; }
+        public static int FontHeight36 { get; private set; }
         public static bool Initialize()
         {
             if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) < 0)

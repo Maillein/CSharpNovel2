@@ -10,7 +10,7 @@ namespace CSharpNovel2.System
         private static readonly int[] PressingCount = new int[ButtonNum];
         private static readonly int[] ReleasingCount = new int[ButtonNum];
 
-        private static bool IsAvailableCode(int buttonCode) { return 1 <= buttonCode && buttonCode <= 3; }
+        private static bool IsAvailableCode(uint buttonCode) { return 1 <= buttonCode && buttonCode <= 3; }
 
         public static void Update()
         {
@@ -77,7 +77,7 @@ namespace CSharpNovel2.System
             }
         }
 
-        public static int GetPressingCount(int buttonCode)
+        public static int GetPressingCount(uint buttonCode)
         {
             if (!IsAvailableCode(buttonCode))
             {
@@ -87,7 +87,7 @@ namespace CSharpNovel2.System
             return PressingCount[buttonCode];
         }
 
-        public static int GetReleasingCount(int buttonCode)
+        public static int GetReleasingCount(uint buttonCode)
         {
             if (!IsAvailableCode(buttonCode))
             {
