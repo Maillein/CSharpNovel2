@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
 using CSharpNovel2.Components;
 using CSharpNovel2.Image;
 using CSharpNovel2.Scene;
 using CSharpNovel2.System;
 using SDL2;
-using NotImplementedException = System.NotImplementedException;
 
 namespace CSharpNovel2.Title
 {
@@ -15,12 +12,18 @@ namespace CSharpNovel2.Title
         private readonly int _menuMaskHandle;
         private readonly Dictionary<string, TextButton> _buttons = new Dictionary<string, TextButton>();
 
+        private void Free()
+        {
+            ImagePool.Free(_menuMaskHandle);
+        }
+        
         private bool OnStartClick()
         {
             // Console.WriteLine("Start was clicked.");
             var parameter = new Parameter();
             parameter.Set("key", 123);
             implSceneChanged.OnSceneChanged(eScene.Game, parameter, false);
+            Free();
             return true;
         }
 
@@ -58,12 +61,12 @@ namespace CSharpNovel2.Title
         public TitleScene(IOnSceneChangeListener impl, Parameter parameter) : base(impl, parameter)
         {
             _menuMaskHandle = ImagePool.Load("title_menu_mask.png");
-            _buttons.Add("start", new TextButton(150, 100, "スタート", OnStartClick, Define.DeepSkyBlue, Define.White, 20));
-            _buttons.Add("load", new TextButton(150, 130, "ロード", () => true, Define.DeepSkyBlue, Define.White, 20));
-            _buttons.Add("setting", new TextButton(150, 160, "環境設定", () => true, Define.DeepSkyBlue, Define.White, 20));
-            _buttons.Add("version", new TextButton(150, 190, "バージョン情報", () => true, Define.DeepSkyBlue, Define.White, 20));
-            _buttons.Add("help", new TextButton(150, 220, "ヘルプ", () => true, Define.DeepSkyBlue, Define.White, 20));
-            _buttons.Add("quit", new TextButton(150, 250, "終了", OnQuitClick, Define.DeepSkyBlue, Define.White, 20));
+            _buttons.Add("start", new TextButton(130, 100, "スタート", OnStartClick, Define.DeepSkyBlue, Define.White, 20));
+            _buttons.Add("load", new TextButton(130, 130, "ロード", () => true, Define.DeepSkyBlue, Define.White, 20));
+            _buttons.Add("setting", new TextButton(130, 160, "環境設定", () => true, Define.DeepSkyBlue, Define.White, 20));
+            _buttons.Add("version", new TextButton(130, 190, "バージョン情報", () => true, Define.DeepSkyBlue, Define.White, 20));
+            _buttons.Add("help", new TextButton(130, 220, "ヘルプ", () => true, Define.DeepSkyBlue, Define.White, 20));
+            _buttons.Add("quit", new TextButton(130, 250, "終了", OnQuitClick, Define.DeepSkyBlue, Define.White, 20));
         }
 
         public override bool Update()
@@ -71,10 +74,8 @@ namespace CSharpNovel2.Title
             foreach (var (key, value) in _buttons)
             {
                 if (key != "quit") value.Update();
-                return !_buttons["quit"].Update();
             }
-
-            return true;
+            return !_buttons["quit"].Update(); // <- なんでうまくいくの？
         }
 
         public override void Render()
