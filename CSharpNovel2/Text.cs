@@ -5,7 +5,7 @@ using SDL2;
 
 namespace CSharpNovel2
 {
-    public class Text
+    public static class Text
     {
         public static void Print(SDL.SDL_Rect dist, string text, int size, SDL.SDL_Color color)
         {
