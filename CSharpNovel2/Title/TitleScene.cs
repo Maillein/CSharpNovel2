@@ -7,7 +7,7 @@ using SDL2;
 
 namespace CSharpNovel2.Title
 {
-    public class TitleScene : AbstractScene
+    public sealed class TitleScene : AbstractScene
     {
         private readonly int _menuMaskHandle;
         private readonly Dictionary<string, TextButton> _buttons = new Dictionary<string, TextButton>();
@@ -22,7 +22,7 @@ namespace CSharpNovel2.Title
             // Console.WriteLine("Start was clicked.");
             var parameter = new Parameter();
             parameter.Set("key", 123);
-            implSceneChanged.OnSceneChanged(EScene.GAME, parameter, false);
+            implSceneChanged.OnSceneChanged(EScene.Game, parameter, false);
             Free();
             return true;
         }

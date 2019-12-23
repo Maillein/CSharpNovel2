@@ -2,7 +2,7 @@
 {
     public enum EScene
     {
-        TITLE,
-        GAME,
+        Title,
+        Game,
     }
 }

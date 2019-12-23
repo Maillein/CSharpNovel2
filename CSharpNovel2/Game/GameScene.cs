@@ -4,7 +4,7 @@ using NotImplementedException = System.NotImplementedException;
 
 namespace CSharpNovel2.Game
 {
-    public class GameScene : AbstractScene
+    public sealed class GameScene : AbstractScene
     {
         public GameScene(IOnSceneChangeListener impl, Parameter parameter) : base(impl, parameter)
         {

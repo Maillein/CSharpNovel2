@@ -47,10 +47,10 @@ namespace CSharpNovel2.System
 
             switch (scene)
             {
-                case EScene.TITLE:
+                case EScene.Title:
                     _sceneStack.Push(new TitleScene(this, parameter));
                     break;
-                case EScene.GAME:
+                case EScene.Game:
                      _sceneStack.Push(new GameScene(this, parameter));
                     break;
                 default:

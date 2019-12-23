@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using SDL2;
 
@@ -6,44 +7,16 @@ namespace CSharpNovel2.System
 {
     public static class GameCore
     {
-        public static IntPtr Window { get; private set; } = IntPtr.Zero;
+        private static IntPtr Window { get; set; } = IntPtr.Zero;
         public static IntPtr Renderer { get; private set; } = IntPtr.Zero;
 
         public static SDL.SDL_Event GameEvent = new SDL.SDL_Event();
+        
+        private static readonly Dictionary<int, IntPtr> Fonts = new Dictionary<int, IntPtr>();
+        private static readonly Dictionary<int, int> FontHeights = new Dictionary<int, int>();
 
-        public static IntPtr RoundedMgenplus4 { get; private set; } = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus8 { get; private set; }= IntPtr.Zero;
-        public static IntPtr RoundedMgenplus12 { get; private set; }= IntPtr.Zero;
-        public static IntPtr RoundedMgenplus16 { get; private set; }= IntPtr.Zero;
-        public static IntPtr RoundedMgenplus18 { get; private set; }= IntPtr.Zero;
-        public static IntPtr RoundedMgenplus20 { get; private set; }= IntPtr.Zero;
-        public static IntPtr RoundedMgenplus24 { get; private set; } = IntPtr.Zero;
-        public static IntPtr RoundedMgenplus36 { get; private set; }= IntPtr.Zero;
-
-        public static IntPtr GetFont(int size)
-        {
-            return size switch
-            {
-                4 => RoundedMgenplus4,
-                8 => RoundedMgenplus8,
-                12 => RoundedMgenplus12,
-                16 => RoundedMgenplus16,
-                18 => RoundedMgenplus18,
-                20 => RoundedMgenplus20,
-                24 => RoundedMgenplus24,
-                36 => RoundedMgenplus36,
-                _ => RoundedMgenplus20,
-            };
-        }
-
-        public static int FontHeight4 { get; private set; }
-        public static int FontHeight8 { get; private set; }
-        public static int FontHeight12 { get; private set; }
-        public static int FontHeight16 { get; private set; }
-        public static int FontHeight18 { get; private set; }
-        public static int FontHeight20 { get; private set; }
-        public static int FontHeight24 { get; private set; }
-        public static int FontHeight36 { get; private set; }
+        public static IntPtr GetFont(int size) { return Fonts[size]; }
+        public static int GetFontHeight(int size) { return FontHeights[size]; }
         public static bool Initialize()
         {
             if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) < 0)
@@ -88,24 +61,12 @@ namespace CSharpNovel2.System
                 return false;
             }
 
-            RoundedMgenplus4  = SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", 4);
-            RoundedMgenplus8  = SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", 8);
-            RoundedMgenplus12 = SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", 12);
-            RoundedMgenplus16 = SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", 16);
-            RoundedMgenplus18 = SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", 18);
-            RoundedMgenplus20 = SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", 20);
-            RoundedMgenplus24 = SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", 24);
-            RoundedMgenplus36 = SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", 36);
-
-            FontHeight4  = SDL_ttf.TTF_FontHeight(RoundedMgenplus4);
-            FontHeight8  = SDL_ttf.TTF_FontHeight(RoundedMgenplus8);
-            FontHeight12 = SDL_ttf.TTF_FontHeight(RoundedMgenplus12);
-            FontHeight16 = SDL_ttf.TTF_FontHeight(RoundedMgenplus16);
-            FontHeight18 = SDL_ttf.TTF_FontHeight(RoundedMgenplus18);
-            FontHeight20 = SDL_ttf.TTF_FontHeight(RoundedMgenplus20);
-            FontHeight24 = SDL_ttf.TTF_FontHeight(RoundedMgenplus24);
-            FontHeight36 = SDL_ttf.TTF_FontHeight(RoundedMgenplus36);
-
+            for (var i = 1; i < 40; i++)
+            {
+                Fonts.Add(i, SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", i));
+                FontHeights.Add(i, SDL_ttf.TTF_FontHeight(Fonts[i]));
+            }
+            
             SDL.SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
             
             return true;
