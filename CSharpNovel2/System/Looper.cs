@@ -38,7 +38,7 @@ namespace CSharpNovel2.System
             return true;
         }
 
-        public void OnSceneChanged(eScene scene, Parameter parameter, bool stackClear)
+        public void OnSceneChanged(EScene scene, Parameter parameter, bool stackClear)
         {
             if (stackClear)
             {
@@ -47,10 +47,10 @@ namespace CSharpNovel2.System
 
             switch (scene)
             {
-                case eScene.Title:
+                case EScene.TITLE:
                     _sceneStack.Push(new TitleScene(this, parameter));
                     break;
-                case eScene.Game:
+                case EScene.GAME:
                      _sceneStack.Push(new GameScene(this, parameter));
                     break;
                 default:

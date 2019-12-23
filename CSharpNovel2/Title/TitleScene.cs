@@ -22,7 +22,7 @@ namespace CSharpNovel2.Title
             // Console.WriteLine("Start was clicked.");
             var parameter = new Parameter();
             parameter.Set("key", 123);
-            implSceneChanged.OnSceneChanged(eScene.Game, parameter, false);
+            implSceneChanged.OnSceneChanged(EScene.GAME, parameter, false);
             Free();
             return true;
         }
