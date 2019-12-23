@@ -1,14 +1,13 @@
-﻿using System;
-using CSharpNovel2.Components;
+﻿using CSharpNovel2.Components;
 using SDL2;
 
 namespace CSharpNovel2.System
 {
-    public sealed class SystemMain
+    public static class SystemMain
     {
         public static bool Initialize() { return GameCore.Initialize(); }
 
-        public static bool FinalizeGame() { return GameCore.FinalizeGame(); }
+        public static void FinalizeGame() { GameCore.FinalizeGame(); }
 
         public static void MainLoop()
         {
@@ -19,7 +18,7 @@ namespace CSharpNovel2.System
                 SDL.SDL_PollEvent(out GameCore.GameEvent);
                 if (GameCore.GameEvent.type == SDL.SDL_EventType.SDL_QUIT)
                 {
-                    bool flag = false;
+                    var flag = false;
                     var yes = new TextButton(540, 390, "はい", () => true, Define.DeepSkyBlue, Define.WhiteTranslucent, 24);
                     var no = new TextButton(720, 390, "いいえ", () => true, Define.DeepSkyBlue, Define.WhiteTranslucent, 24);
                     var mask = new Image.Image("window_gray_mask.png");

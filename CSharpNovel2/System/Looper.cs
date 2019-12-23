@@ -28,14 +28,13 @@ namespace CSharpNovel2.System
             return ret;
         }
 
-        public bool RenderOnly()
+        public void RenderOnly()
         {
             Keyboard.Update();
             Mouse.Update();
             _sceneStack.Peek().Render();
             _fps.Render();
             _fps.Wait();
-            return true;
         }
 
         public void OnSceneChanged(EScene scene, Parameter parameter, bool stackClear)

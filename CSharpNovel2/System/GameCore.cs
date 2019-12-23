@@ -67,12 +67,11 @@ namespace CSharpNovel2.System
             return true;
         }
 
-        public static bool FinalizeGame()
+        public static void FinalizeGame()
         {
             SDL.SDL_DestroyRenderer(Renderer);
             SDL.SDL_DestroyWindow(Window);
             SDL.SDL_Quit();
-            return true;
         }
     }
 }
