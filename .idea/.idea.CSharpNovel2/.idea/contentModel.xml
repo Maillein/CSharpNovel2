@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Maillein\.Rider2019.3\config\scratches" t="IncludeRecursive" />
-    <e p="C:\Users\Maillein\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Maillein\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_CSharpNovel2.-1357652230.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Maillein\RiderProjects\CSharpNovel2" t="IncludeFlat">
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_CSharpNovel2.784928209.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="CSharpNovel2" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Components" t="Include">
           <e p="IButton.cs" t="Include" />
           <e p="IClickable.cs" t="Include" />
           <e p="IComponents.cs" t="Include" />
+          <e p="Slider.cs" t="Include" />
           <e p="TextButton.cs" t="Include" />
         </e>
         <e p="CSharpNovel2.csproj" t="IncludeRecursive" />

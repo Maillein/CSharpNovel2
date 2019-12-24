@@ -24,6 +24,8 @@ namespace CSharpNovel2.System
                 Console.Error.WriteLine($"Unable to initialize. Error: {SDL.SDL_GetError()}");
                 return false;
             }
+            
+            // Console.WriteLine("SDL was initialized.");
 
             Window = SDL.SDL_CreateWindow("Title", SDL.SDL_WINDOWPOS_CENTERED, SDL.SDL_WINDOWPOS_CENTERED,
                 Define.WindowWidth, Define.WindowHeight, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
@@ -33,6 +35,8 @@ namespace CSharpNovel2.System
                 Console.Error.WriteLine($"Unable to create window. Error: {SDL.SDL_GetError()}");
                 return false;
             }
+            
+            // Console.WriteLine("Window was created.");
 
             Renderer = SDL.SDL_CreateRenderer(Window, -1,
                 SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL.SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
@@ -42,6 +46,8 @@ namespace CSharpNovel2.System
                 Console.Error.WriteLine($"Unable to create renderer. Error: {SDL.SDL_GetError()}");
                 return false;
             }
+            
+            // Console.WriteLine("Renderer was created.");
 
             if ((SDL_image.IMG_Init(SDL_image.IMG_InitFlags.IMG_INIT_PNG) &
                  (int) SDL_image.IMG_InitFlags.IMG_INIT_PNG) == 0)
@@ -56,13 +62,15 @@ namespace CSharpNovel2.System
                 return false;
             }
 
-            for (var i = 1; i < 40; i++)
+            for (var i = 1; i <= 40; i++)
             {
                 Fonts.Add(i, SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", i));
                 FontHeights.Add(i, SDL_ttf.TTF_FontHeight(Fonts[i]));
             }
 
             SDL.SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
+            
+            // Console.WriteLine("All initialized.");
 
             return true;
         }
