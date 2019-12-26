@@ -5,8 +5,8 @@ namespace CSharpNovel2.Components
 {
     public interface IClickable
     {
-        bool IsClicked();
         bool IsMouseOvered();
+        bool IsClicked();
         delegate bool OnClick();
     }
 }

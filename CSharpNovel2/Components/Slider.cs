@@ -49,7 +49,7 @@ namespace CSharpNovel2.Components
             _rightRect.x = _clipRect.x + _leftRect.w;
             _rightRect.w = _clipRect.w - _leftRect.w;
             _sliderRect.x = _clipRect.x + _leftRect.w - 4;
-            return true;
+            return _callBack();
         }
 
         public bool Render()

@@ -11,6 +11,7 @@
           <e p="IClickable.cs" t="Include" />
           <e p="IComponents.cs" t="Include" />
           <e p="Slider.cs" t="Include" />
+          <e p="TextBox.cs" t="Include" />
           <e p="TextButton.cs" t="Include" />
         </e>
         <e p="CSharpNovel2.csproj" t="IncludeRecursive" />

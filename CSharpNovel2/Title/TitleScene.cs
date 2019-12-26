@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CSharpNovel2.Components;
 using CSharpNovel2.Image;
 using CSharpNovel2.Scene;
@@ -11,7 +12,6 @@ namespace CSharpNovel2.Title
     {
         private readonly int _menuMaskHandle;
         private readonly Dictionary<string, TextButton> _buttons = new Dictionary<string, TextButton>();
-        private readonly Slider _slider = new Slider("slider", 0, 100, 30, new SDL.SDL_Rect{x = 500, y = 500, w = 150, h = 10}, () => true);
 
         private void Free() { ImagePool.Free(_menuMaskHandle); }
 
@@ -75,8 +75,6 @@ namespace CSharpNovel2.Title
                 if (key != "quit") value.Update();
             }
 
-            _slider.Update();
-            
             return !_buttons["quit"].Update(); // <- なんでうまくいくの？
         }
 
@@ -84,7 +82,6 @@ namespace CSharpNovel2.Title
         {
             ImagePool.Render(_menuMaskHandle, 0, 0);
             foreach (var (_, value) in _buttons) value.Render();
-            _slider.Render();
         }
     }
 }
