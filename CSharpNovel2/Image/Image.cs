@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using CSharpNovel2.GameSystem;
 using CSharpNovel2.System;
 using SDL2;
 

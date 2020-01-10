@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_CSharpNovel2.784928209.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\Maillein\.Rider2019.3\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\Maillein\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Maillein\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_CSharpNovel2.-1357652230.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Maillein\RiderProjects\CSharpNovel2" t="IncludeFlat">
       <e p="CSharpNovel2" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Components" t="Include">
@@ -13,11 +14,24 @@
           <e p="Slider.cs" t="Include" />
           <e p="TextBox.cs" t="Include" />
           <e p="TextButton.cs" t="Include" />
+          <e p="WrappedText.cs" t="Include" />
+        </e>
+        <e p="config" t="Include">
+          <e p="ConfigScene.cs" t="Include" />
         </e>
         <e p="CSharpNovel2.csproj" t="IncludeRecursive" />
         <e p="Define.cs" t="Include" />
         <e p="Game" t="Include">
           <e p="GameScene.cs" t="Include" />
+        </e>
+        <e p="GameSystem" t="Include">
+          <e p="AbstractScene.cs" t="Include" />
+          <e p="Fps.cs" t="Include" />
+          <e p="GameCore.cs" t="Include" />
+          <e p="Keyboard.cs" t="Include" />
+          <e p="Looper.cs" t="Include" />
+          <e p="Mouse.cs" t="Include" />
+          <e p="SystemMain.cs" t="Include" />
         </e>
         <e p="Image" t="Include">
           <e p="Image.cs" t="Include" />
@@ -42,19 +56,11 @@
           <e p="SDL2_mixer.cs" t="Include" />
           <e p="SDL2_ttf.cs" t="Include" />
         </e>
-        <e p="system" t="Include">
-          <e p="AbstractScene.cs" t="Include" />
-          <e p="Fps.cs" t="Include" />
-          <e p="GameCore.cs" t="Include" />
-          <e p="Keyboard.cs" t="Include" />
-          <e p="Looper.cs" t="Include" />
-          <e p="Mouse.cs" t="Include" />
-          <e p="SystemMain.cs" t="Include" />
-        </e>
         <e p="Text.cs" t="Include" />
         <e p="Title" t="Include">
           <e p="TitleScene.cs" t="Include" />
         </e>
+        <e p="Utils.cs" t="Include" />
       </e>
       <e p="CSharpNovel2.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

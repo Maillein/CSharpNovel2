@@ -1,3 +1,4 @@
+using CSharpNovel2.GameSystem;
 using CSharpNovel2.System;
 using SDL2;
 using NotImplementedException = System.NotImplementedException;

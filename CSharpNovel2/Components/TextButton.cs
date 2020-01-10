@@ -1,4 +1,5 @@
 using System;
+using CSharpNovel2.GameSystem;
 using CSharpNovel2.System;
 using SDL2;
 
