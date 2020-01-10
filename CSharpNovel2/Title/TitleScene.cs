@@ -69,7 +69,7 @@ namespace CSharpNovel2.Title
             _buttons.Add("version", new TextButton(130, 190, "バージョン情報", () => true, Define.DeepSkyBlue, Define.White, 20));
             _buttons.Add("help", new TextButton(130, 220, "ヘルプ", () => true, Define.DeepSkyBlue, Define.White, 20));
             _buttons.Add("quit", new TextButton(130, 250, "終了", OnQuitClick, Define.DeepSkyBlue, Define.White, 20));
-            _slider = new Slider("slider", 0, 100, 30, new SDL.SDL_Rect{x = 500, y = 500, w = 300, h = 12}, () => true);
+            _slider = new Slider("slider", 1, 10, 3, new SDL.SDL_Rect{x = 500, y = 500, w = 300, h = 12}, () => true);
             _textBox = new TextBox(new SDL.SDL_Rect {x = 300, y = 300, w = 500, h = 40}, "text");
             _wrappedText = new WrappedText(24, 300, 000, 500);
             _wrappedText.SetText("昔々あるところに\nおじいさんとおばあさんがすんでいました。\nある日、おじいさんは山へしばかりに、おばあさんは川へ洗濯に行きました。すると。。。");
@@ -83,6 +83,7 @@ namespace CSharpNovel2.Title
             }
 
             _slider.Update();
+            Define.TextSpeed = (int)_slider.Value;
             _textBox.Update();
             _wrappedText.Update();
 

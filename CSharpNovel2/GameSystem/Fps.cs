@@ -7,7 +7,9 @@ namespace CSharpNovel2.GameSystem
     public class Fps
     {
         private const int ListLenMax = 120;
+/*
         private const int FPS = 60;
+*/
         private const int UpIntvl = 60;
 
         private readonly List<uint> _list = new List<uint>();
@@ -45,7 +47,7 @@ namespace CSharpNovel2.GameSystem
                 return 0;
             }
 
-            const int shouldTookTime = (int) (1000.0 / 60.0 * FPS);
+            const int shouldTookTime = (int) (1000.0 / 60.0 * Define.Fps);
             var actuallyTookTime = (int) (SDL.SDL_GetTicks() - _list[0]);
             var waitTime = shouldTookTime - actuallyTookTime;
             waitTime = waitTime > 0 ? waitTime : 0;

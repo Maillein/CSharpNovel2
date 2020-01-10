@@ -42,7 +42,7 @@ namespace CSharpNovel2.Components
 
         public bool Update()
         {
-            if (GameCore.FrameCount % 5 != 0) return true;
+            if (GameCore.FrameCount % (ulong) (Define.Fps / Define.TextSpeed) != 0) return true;
             var nextChar = "";
             char ch;
             if (_currentCharNumber < _text.Length)
