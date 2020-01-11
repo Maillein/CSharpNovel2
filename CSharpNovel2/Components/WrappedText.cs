@@ -15,6 +15,8 @@ namespace CSharpNovel2.Components
         private readonly int _offsetY;
         private readonly int _widthLimit;
         private readonly int _lineHeight;
+        
+        public bool IsShowing { get; private set; }
         public WrappedText(int fontSize, int offsetX, int offsetY, int widthLimit)
         {
             _fontSize = fontSize;
@@ -22,6 +24,7 @@ namespace CSharpNovel2.Components
             _offsetY = offsetY;
             _widthLimit = widthLimit;
             _lineHeight = GameCore.GetFontHeight(fontSize);
+            IsShowing = true;
             Clear();
         }
 
@@ -40,9 +43,8 @@ namespace CSharpNovel2.Components
             _text = text;
         }
 
-        public bool Update()
+        public bool UpdateText()
         {
-            if (GameCore.FrameCount % (ulong) (Define.Fps / Define.TextSpeed) != 0) return true;
             var nextChar = "";
             char ch;
             if (_currentCharNumber < _text.Length)
@@ -51,6 +53,7 @@ namespace CSharpNovel2.Components
             }
             else
             {
+                IsShowing = false;
                 return true;
             }
             if (ch == '\n')
@@ -67,7 +70,7 @@ namespace CSharpNovel2.Components
             }
             nextChar += ch;
             if (0xD800 <= ch && ch <= 0xDFFF) nextChar += _text[_currentCharNumber++];
-            SDL_ttf.TTF_SizeText(GameCore.GetFont(_fontSize), _lines[_currentLineNumber] + nextChar, out var w, out var _);
+            SDL_ttf.TTF_SizeUTF8(GameCore.GetFont(_fontSize), _lines[_currentLineNumber] + nextChar, out var w, out var _);
             if (w > _widthLimit)
             {
                 _lines.Add(nextChar);
@@ -77,7 +80,27 @@ namespace CSharpNovel2.Components
             {
                 _lines[_currentLineNumber] += nextChar;
             }
+
             return true;
+        }
+
+        public void ShowAllText()
+        {
+            var oldCharNumber = _currentCharNumber;
+            UpdateText();
+            while (oldCharNumber != _currentCharNumber)
+            {
+                oldCharNumber = _currentCharNumber;
+                UpdateText();
+            }
+
+            IsShowing = false;
+        }
+
+        public bool Update()
+        {
+            if (GameCore.FrameCount % (ulong) (Define.Fps / Define.TextSpeed) != 0) return true;
+            return UpdateText();
         }
 
         public bool Render()

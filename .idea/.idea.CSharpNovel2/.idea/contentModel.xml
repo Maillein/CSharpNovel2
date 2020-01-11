@@ -23,6 +23,7 @@
         <e p="Define.cs" t="Include" />
         <e p="Game" t="Include">
           <e p="GameScene.cs" t="Include" />
+          <e p="MessageWindow.cs" t="Include" />
         </e>
         <e p="GameSystem" t="Include">
           <e p="AbstractScene.cs" t="Include" />
