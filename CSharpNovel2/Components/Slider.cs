@@ -34,7 +34,7 @@ namespace CSharpNovel2.Components
         public Slider(string title, double min, double max, double value, SDL.SDL_Rect clipRect, CallBack callBack)
         {
             _title = title;
-            _range = (min: min, max: max);
+            _range = (min, max);
             Value = value;
             _clipRect = clipRect;
             _leftRect = new SDL.SDL_Rect{x = clipRect.x, y = clipRect.y + clipRect.h / 3, w = (int)(value / (max - min) * clipRect.w), h = clipRect.h / 3};
