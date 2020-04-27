@@ -10,10 +10,8 @@ namespace CSharpNovel2
     {
         private static void Main(string[] args)
         {
-            // Console.WriteLine("Initialize");
             if (SystemMain.Initialize())
             {
-                // Console.WriteLine("Initialized");
                 SystemMain.MainLoop();
             }
 

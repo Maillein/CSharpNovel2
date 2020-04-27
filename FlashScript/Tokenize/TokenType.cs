@@ -40,6 +40,7 @@ namespace FlashScript.Tokenize
         TRUE,
         FALSE,
         RETURN,
+        CM,    // Clear Message
         // その他必要になったら追加します。 
     }
 }

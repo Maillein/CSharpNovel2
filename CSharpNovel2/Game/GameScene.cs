@@ -13,8 +13,8 @@ namespace CSharpNovel2.Game
         public GameScene(IOnSceneChangeListener impl, Parameter parameter) : base(impl, parameter)
         {
             _backgroundImageHandel = ImagePool.Load("default_background.png");
-            _messageWindow = new MessageWindow();
-            _messageWindow.SetMessage("ノベルゲームの典型的なフォーマットです。画面上部3/4には背景や立ち絵、下部1/4にはメッセージウィンドウが表示されています。");
+            _messageWindow = new MessageWindow {Name = "ナレーター"};
+            _messageWindow.SetMessage("ノベルゲームの典型的なフォーマットです。\v\n画面上部3/4には背景や立ち絵、下部1/4にはメッセージウィンドウが表示されています。");
         }
         public override bool Update()
         {

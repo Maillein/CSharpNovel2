@@ -10,7 +10,7 @@ namespace CSharpNovel2
 
         public const int Fps = 60;
 
-        public static int TextSpeed = 10;
+        public static int TextSpeed { get; set; }= 30;
 
         public static readonly SDL.SDL_Color White = new SDL.SDL_Color {r = 255, g = 255, b = 255, a = 0};
         public static readonly SDL.SDL_Color WhiteTranslucent = new SDL.SDL_Color {r = 255, g = 255, b = 255, a = 128};

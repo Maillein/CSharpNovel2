@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CSharpNovel2.GameSystem;
 using SDL2;
 
@@ -6,7 +7,7 @@ namespace CSharpNovel2.Components
 {
     public class WrappedText : IComponents
     {
-        private string? _text;
+        private string _text;
         private readonly List<string> _lines = new List<string>();
         private int _currentLineNumber;
         private int _currentCharNumber;
@@ -17,6 +18,7 @@ namespace CSharpNovel2.Components
         private readonly int _lineHeight;
         
         public bool IsShowing { get; private set; }
+        public bool IsWaiting { get; set; }
         public WrappedText(int fontSize, int offsetX, int offsetY, int widthLimit)
         {
             _fontSize = fontSize;
@@ -25,6 +27,7 @@ namespace CSharpNovel2.Components
             _widthLimit = widthLimit;
             _lineHeight = GameCore.GetFontHeight(fontSize);
             IsShowing = true;
+            IsWaiting = false;
             Clear();
         }
 
@@ -47,13 +50,18 @@ namespace CSharpNovel2.Components
         {
             var nextChar = "";
             char ch;
-            if (_currentCharNumber < _text.Length)
+            if (_currentCharNumber < _text?.Length)
             {
                 ch = _text[_currentCharNumber++];
             }
             else
             {
                 IsShowing = false;
+                return true;
+            }
+            if (ch == '\v')
+            {
+                IsWaiting = true;
                 return true;
             }
             if (ch == '\n')
@@ -92,6 +100,7 @@ namespace CSharpNovel2.Components
             {
                 oldCharNumber = _currentCharNumber;
                 UpdateText();
+                if (IsWaiting) return;
             }
 
             IsShowing = false;
@@ -99,6 +108,7 @@ namespace CSharpNovel2.Components
 
         public bool Update()
         {
+            if (IsWaiting) return true;
             if (GameCore.FrameCount % (ulong) (Define.Fps / Define.TextSpeed) != 0) return true;
             return UpdateText();
         }
