@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CSharpNovel2.Config;
 using CSharpNovel2.Game;
 using CSharpNovel2.Scene;
 using CSharpNovel2.System;
@@ -52,6 +53,9 @@ namespace CSharpNovel2.GameSystem
                     break;
                 case EScene.Game:
                     _sceneStack.Push(new GameScene(this, parameter));
+                    break;
+                case EScene.Config:
+                    _sceneStack.Push(new ConfigScene(this, parameter));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(scene), scene, "シーン処理中に不明なエラーが発生しました。");

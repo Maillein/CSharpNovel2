@@ -4,5 +4,6 @@
     {
         Title,
         Game,
+        Config,
     }
 }

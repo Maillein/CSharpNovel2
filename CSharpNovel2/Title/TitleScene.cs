@@ -20,8 +20,14 @@ namespace CSharpNovel2.Title
             // Console.WriteLine("Start was clicked.");
             var parameter = new Parameter();
             parameter.Set("key", 123);
-            implSceneChanged.OnSceneChanged(EScene.Game, parameter, false);
+            implSceneChanged.OnSceneChanged(EScene.Game, parameter, true);
             Free();
+            return true;
+        }
+
+        private bool OnConfigClick()
+        {
+            implSceneChanged.OnSceneChanged(EScene.Config, new Parameter(), false);
             return true;
         }
 
@@ -62,11 +68,10 @@ namespace CSharpNovel2.Title
             _menuMaskHandle = ImagePool.Load("title_menu_mask.png");
             _buttons.Add("start", new TextButton(130, 100, "スタート", OnStartClick, Define.DeepSkyBlue, Define.White, 20));
             _buttons.Add("load", new TextButton(130, 130, "ロード", () => true, Define.DeepSkyBlue, Define.White, 20));
-            _buttons.Add("setting", new TextButton(130, 160, "環境設定", () => true, Define.DeepSkyBlue, Define.White, 20));
+            _buttons.Add("config", new TextButton(130, 160, "環境設定", OnConfigClick, Define.DeepSkyBlue, Define.White, 20));
             _buttons.Add("version", new TextButton(130, 190, "バージョン情報", () => true, Define.DeepSkyBlue, Define.White, 20));
             _buttons.Add("help", new TextButton(130, 220, "ヘルプ", () => true, Define.DeepSkyBlue, Define.White, 20));
             _buttons.Add("quit", new TextButton(130, 250, "終了", OnQuitClick, Define.DeepSkyBlue, Define.White, 20));
-            // _slider = new Slider("slider", 1, 20, 20, new SDL.SDL_Rect{x = 500, y = 500, w = 300, h = 12}, () => true);
             // _textBox = new TextBox(new SDL.SDL_Rect {x = 300, y = 300, w = 500, h = 40}, "text");
             // _wrappedText = new WrappedText(24, 300, 000, 500);
             // _wrappedText.SetText("昔々あるところに\nおじいさんとおばあさんがすんでいました。\nある日、おじいさんは山へしばかりに、おばあさんは川へ洗濯に行きました。すると。。。");
@@ -79,7 +84,6 @@ namespace CSharpNovel2.Title
                 if (key != "quit") value.Update();
             }
 
-            // _slider.Update();
             // Define.TextSpeed = (int)_slider.Value;
             // _textBox.Update();
             // Update_wrappedText.Update();
@@ -91,7 +95,6 @@ namespace CSharpNovel2.Title
         {
             ImagePool.Render(_menuMaskHandle, 0, 0);
             foreach (var (_, value) in _buttons) value.Render();
-            // _slider.Render();
             // _textBox.Render();
             // _wrappedText.Render();
         }
