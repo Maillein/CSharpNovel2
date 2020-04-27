@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using SDL2;
 
 namespace CSharpNovel2.GameSystem
@@ -71,6 +73,8 @@ namespace CSharpNovel2.GameSystem
                 return false;
             }
             
+            SDL.SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
+            
             // Console.WriteLine("Renderer was created.");
 
             if ((SDL_image.IMG_Init(SDL_image.IMG_InitFlags.IMG_INIT_PNG) &
@@ -79,7 +83,7 @@ namespace CSharpNovel2.GameSystem
                 Console.Error.WriteLine($"Unable to initialize SDL_image. Error: {SDL.SDL_GetError()}");
                 return false;
             }
-
+            
             if (SDL_ttf.TTF_Init() < 0)
             {
                 Console.Error.WriteLine($"Unable to initialize SDL_ttf. Error: {SDL.SDL_GetError()}");
@@ -89,13 +93,15 @@ namespace CSharpNovel2.GameSystem
             for (var i = 1; i <= 40; i++)
             {
                 Fonts.Add(i, SDL_ttf.TTF_OpenFont("./media/fonts/rounded-mgenplus-1c-regular.ttf", i));
+                if (Fonts[i] == IntPtr.Zero)
+                {
+                    Console.WriteLine("Unable to load Font.");
+                    return false;
+                }
+
                 FontHeights.Add(i, SDL_ttf.TTF_FontHeight(Fonts[i]));
             }
-
-            SDL.SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
             
-            // Console.WriteLine("All initialized.");
-
             return true;
         }
 

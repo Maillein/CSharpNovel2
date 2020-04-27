@@ -6,7 +6,7 @@ namespace CSharpNovel2
     {
         public static T Max<T>(params T[] nums) where T : IComparable
         {
-            if (nums.Length == 0) return default(T);
+            if (nums.Length == 0) return default(T)!;
             var max = nums[0];
             for (var i = 1; i < nums.Length; i++)
             {

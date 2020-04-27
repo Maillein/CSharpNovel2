@@ -1,4 +1,5 @@
-﻿using CSharpNovel2.Components;
+﻿using System.Threading.Tasks;
+using CSharpNovel2.Components;
 using SDL2;
 
 namespace CSharpNovel2.GameSystem

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using CSharpNovel2.GameSystem;
 using CSharpNovel2.System;
 

@@ -12,9 +12,6 @@ namespace CSharpNovel2.Title
     {
         private readonly int _menuMaskHandle;
         private readonly Dictionary<string, TextButton> _buttons = new Dictionary<string, TextButton>();
-        private readonly Slider _slider;
-        private readonly TextBox _textBox;
-        private readonly WrappedText _wrappedText;
 
         private void Free() { ImagePool.Free(_menuMaskHandle); }
 
@@ -23,7 +20,7 @@ namespace CSharpNovel2.Title
             // Console.WriteLine("Start was clicked.");
             var parameter = new Parameter();
             parameter.Set("key", 123);
-            ImplSceneChanged.OnSceneChanged(EScene.Game, parameter, false);
+            implSceneChanged.OnSceneChanged(EScene.Game, parameter, false);
             Free();
             return true;
         }
@@ -69,10 +66,10 @@ namespace CSharpNovel2.Title
             _buttons.Add("version", new TextButton(130, 190, "バージョン情報", () => true, Define.DeepSkyBlue, Define.White, 20));
             _buttons.Add("help", new TextButton(130, 220, "ヘルプ", () => true, Define.DeepSkyBlue, Define.White, 20));
             _buttons.Add("quit", new TextButton(130, 250, "終了", OnQuitClick, Define.DeepSkyBlue, Define.White, 20));
-            _slider = new Slider("slider", 1, 20, 20, new SDL.SDL_Rect{x = 500, y = 500, w = 300, h = 12}, () => true);
-            _textBox = new TextBox(new SDL.SDL_Rect {x = 300, y = 300, w = 500, h = 40}, "text");
-            _wrappedText = new WrappedText(24, 300, 000, 500);
-            _wrappedText.SetText("昔々あるところに\nおじいさんとおばあさんがすんでいました。\nある日、おじいさんは山へしばかりに、おばあさんは川へ洗濯に行きました。すると。。。");
+            // _slider = new Slider("slider", 1, 20, 20, new SDL.SDL_Rect{x = 500, y = 500, w = 300, h = 12}, () => true);
+            // _textBox = new TextBox(new SDL.SDL_Rect {x = 300, y = 300, w = 500, h = 40}, "text");
+            // _wrappedText = new WrappedText(24, 300, 000, 500);
+            // _wrappedText.SetText("昔々あるところに\nおじいさんとおばあさんがすんでいました。\nある日、おじいさんは山へしばかりに、おばあさんは川へ洗濯に行きました。すると。。。");
         }
 
         public override bool Update()
@@ -82,10 +79,10 @@ namespace CSharpNovel2.Title
                 if (key != "quit") value.Update();
             }
 
-            _slider.Update();
-            Define.TextSpeed = (int)_slider.Value;
-            _textBox.Update();
-            _wrappedText.Update();
+            // _slider.Update();
+            // Define.TextSpeed = (int)_slider.Value;
+            // _textBox.Update();
+            // Update_wrappedText.Update();
 
             return !_buttons["quit"].Update(); // <- なんでうまくいくの？
         }
@@ -94,9 +91,9 @@ namespace CSharpNovel2.Title
         {
             ImagePool.Render(_menuMaskHandle, 0, 0);
             foreach (var (_, value) in _buttons) value.Render();
-            _slider.Render();
-            _textBox.Render();
-            _wrappedText.Render();
+            // _slider.Render();
+            // _textBox.Render();
+            // _wrappedText.Render();
         }
     }
 }

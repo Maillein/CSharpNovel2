@@ -6,7 +6,7 @@ namespace CSharpNovel2.Components
 {
     public class WrappedText : IComponents
     {
-        private string _text;
+        private string? _text;
         private readonly List<string> _lines = new List<string>();
         private int _currentLineNumber;
         private int _currentCharNumber;
