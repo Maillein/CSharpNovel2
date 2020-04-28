@@ -59,23 +59,25 @@ namespace CSharpNovel2.Components
                 IsShowing = false;
                 return true;
             }
-            if (ch == '\v')
+            switch (ch)
             {
-                IsWaiting = true;
-                return true;
-            }
-            if (ch == '\n')
-            {
-                ch = _text[_currentCharNumber++];
-                nextChar += ch;
-                if (0xD800 <= ch && ch <= 0xDFFF)
+                case '\v':
+                    IsWaiting = true;
+                    return true;
+                case '\n':
                 {
-                    nextChar += _text[_currentCharNumber++];
+                    ch = _text[_currentCharNumber++];
+                    nextChar += ch;
+                    if (0xD800 <= ch && ch <= 0xDFFF)
+                    {
+                        nextChar += _text[_currentCharNumber++];
+                    }
+                    _lines.Add(nextChar);
+                    _currentLineNumber++;
+                    return true;
                 }
-                _lines.Add(nextChar);
-                _currentLineNumber++;
-                return true;
             }
+
             nextChar += ch;
             if (0xD800 <= ch && ch <= 0xDFFF) nextChar += _text[_currentCharNumber++];
             SDL_ttf.TTF_SizeUTF8(GameCore.GetFont(_fontSize), _lines[_currentLineNumber] + nextChar, out var w, out var _);

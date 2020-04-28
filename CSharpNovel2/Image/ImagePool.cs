@@ -112,7 +112,7 @@ namespace CSharpNovel2.Image
             var w = size.w / num.Item1;
             var h = size.h / num.Item2;
             if (Images[handle].RenderClip(x, y,
-                    new SDL.SDL_Rect {x = w * (index % num.Item1), y = h * (index / num.Item2), w = w, h = h}) ==
+                    new SDL.SDL_Rect {x = w * (index % num.Item1), y = h * ((index / num.Item1) % num.Item2), w = w, h = h}) ==
                 0) return true;
             Console.Error.WriteLine($"Unable to render {NameDictionary[handle]}. SDL Error: {SDL.SDL_GetError()}");
             return false;
