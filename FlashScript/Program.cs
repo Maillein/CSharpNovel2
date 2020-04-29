@@ -1,5 +1,6 @@
 ﻿using System;
 using CSharpNovel2.Components;
+using Sprache;
 
 namespace FlashScript
 {
@@ -7,7 +8,6 @@ namespace FlashScript
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }

@@ -1,6 +1,57 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c33e08ea_002D85c0_002D41b0_002D8d83_002D18a5f8dd841a/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="False" ContinuousTestingMode="0" FrameworkVersion="{x:Null}" IsLocked="False" Name="TestParseTag" PlatformMonoPreference="{x:Null}" PlatformType="{x:Null}" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
+  &lt;Or&gt;
+    &lt;Or&gt;
+      &lt;Or&gt;
+        &lt;Or&gt;
+          &lt;Or&gt;
+            &lt;Or&gt;
+              &lt;Or&gt;
+                &lt;Or&gt;
+                  &lt;Or&gt;
+                    &lt;TestAncestor&gt;
+                      &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseTag&lt;/TestId&gt;
+                    &lt;/TestAncestor&gt;
+                    &lt;TestAncestor&gt;
+                      &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseLines&lt;/TestId&gt;
+                    &lt;/TestAncestor&gt;
+                  &lt;/Or&gt;
+                  &lt;TestAncestor&gt;
+                    &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseLabel&lt;/TestId&gt;
+                  &lt;/TestAncestor&gt;
+                &lt;/Or&gt;
+                &lt;TestAncestor&gt;
+                  &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseVariable&lt;/TestId&gt;
+                &lt;/TestAncestor&gt;
+              &lt;/Or&gt;
+              &lt;TestAncestor&gt;
+                &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseLabelOrLinesOrTag&lt;/TestId&gt;
+              &lt;/TestAncestor&gt;
+            &lt;/Or&gt;
+            &lt;TestAncestor&gt;
+              &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseLabelOrLinesOrTag1&lt;/TestId&gt;
+            &lt;/TestAncestor&gt;
+          &lt;/Or&gt;
+          &lt;TestAncestor&gt;
+            &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseLabelOrLinesOrTag2&lt;/TestId&gt;
+          &lt;/TestAncestor&gt;
+        &lt;/Or&gt;
+        &lt;TestAncestor&gt;
+          &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseLabelOrLinesOrTag3&lt;/TestId&gt;
+        &lt;/TestAncestor&gt;
+      &lt;/Or&gt;
+      &lt;TestAncestor&gt;
+        &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseProgram1&lt;/TestId&gt;
+      &lt;/TestAncestor&gt;
+    &lt;/Or&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseTag1&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+  &lt;/Or&gt;
+&lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=dstrect/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=LSBRACE/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Maillein/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Mgenplus/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Overed/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=RSBRACE/@EntryIndexedValue">True</s:Boolean>

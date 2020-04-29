@@ -38,6 +38,8 @@ namespace CSharpNovel2.Components
             _lines.Add("");
             _currentLineNumber = 0;
             _currentCharNumber = 0;
+            IsShowing = true;
+            IsWaiting = false;
         }
 
         public void SetText(string text)

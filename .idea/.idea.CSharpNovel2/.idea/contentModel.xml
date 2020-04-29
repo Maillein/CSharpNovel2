@@ -82,12 +82,9 @@
             </e>
           </e>
         </e>
+        <e p="Parse.cs" t="Include" />
         <e p="Program.cs" t="Include" />
-        <e p="Tokenize" t="Include">
-          <e p="Token.cs" t="Include" />
-          <e p="Tokenizer.cs" t="Include" />
-          <e p="TokenType.cs" t="Include" />
-        </e>
+        <e p="Syntax.cs" t="Include" />
       </e>
       <e p="FlashScriptTest" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -99,6 +96,7 @@
             </e>
           </e>
         </e>
+        <e p="scenario.fbs" t="Include" />
         <e p="UnitTest1.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />

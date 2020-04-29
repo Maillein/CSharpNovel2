@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 using CSharpNovel2.Components;
 using CSharpNovel2.GameSystem;
 using CSharpNovel2.Image;
@@ -11,12 +12,13 @@ namespace CSharpNovel2.Game
     {
         private readonly int _messageWindowImageHandle;
         private readonly int _waitClickImageHandle;
-        private int _waitClickImageIndex = 0;
+        private int _waitClickImageIndex;
         private readonly WrappedText _message;
-        
+
         public string Name { private get; set; }
 
         public string Message { set => _message.SetText(value); }
+        public Queue<string> MessageQueue { get; set; }
 
         public bool IsShowing => _message.IsShowing;
         public bool IsWaiting => _message.IsWaiting;
@@ -40,7 +42,12 @@ namespace CSharpNovel2.Game
             
             if (IsClicked())
             {
-                if (_message.IsWaiting)
+                if (!IsShowing)
+                {
+                    Next();
+                    return true;
+                }
+                if (IsWaiting)
                 {
                     _message.IsWaiting = false;
                     return true;
@@ -66,8 +73,8 @@ namespace CSharpNovel2.Game
         public bool IsMouseOvered()
         {
             var mousePos = Mouse.GetPosition();
-            return 0 <= mousePos.x && mousePos.x <= 1280 && 0 <= mousePos.y && mousePos.y <= 710;
-            // return 0 <= mousePos.x && mousePos.x <= 1280 && 530 <= mousePos.y && mousePos.y <= 710;
+            // return 0 <= mousePos.x && mousePos.x <= 1280 && 0 <= mousePos.y && mousePos.y <= 710;
+            return 0 <= mousePos.x && mousePos.x <= 1280 && 530 <= mousePos.y && mousePos.y <= 710;
         }
 
         public bool IsClicked()
@@ -75,6 +82,13 @@ namespace CSharpNovel2.Game
             return IsMouseOvered() && Mouse.GetPressingCount(SDL.SDL_BUTTON_LEFT) == 1 
                    || Keyboard.GetPressingCount(SDL.SDL_Scancode.SDL_SCANCODE_RETURN) == 1
                    || Keyboard.GetPressingCount(SDL.SDL_Scancode.SDL_SCANCODE_SPACE) == 1;
+        }
+
+        public bool Next()
+        {
+            if (MessageQueue.Count <= 0) return false;
+            Message = MessageQueue.Dequeue();
+            return true;
         }
     }
 }
