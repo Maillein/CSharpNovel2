@@ -5,7 +5,6 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Nullable>disable</Nullable>
-        <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
     </PropertyGroup>
 
 </Project>
