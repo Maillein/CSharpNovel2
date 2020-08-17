@@ -6,10 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CSharpNovel2\CSharpNovel2.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Sprache" Version="2.3.0" />
     </ItemGroup>
 
