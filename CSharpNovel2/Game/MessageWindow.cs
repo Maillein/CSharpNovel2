@@ -10,6 +10,10 @@ namespace CSharpNovel2.Game
 {
     public class MessageWindow : IComponents, IClickable
     {
+        private static MessageWindow _messageWindow = new MessageWindow();
+
+        public static MessageWindow getInstance = _messageWindow;
+        
         private readonly int _messageWindowImageHandle;
         private readonly int _waitClickImageHandle;
         private int _waitClickImageIndex;
@@ -23,12 +27,13 @@ namespace CSharpNovel2.Game
         public bool IsShowing => _message.IsShowing;
         public bool IsWaiting => _message.IsWaiting;
 
-        public MessageWindow()
+        private MessageWindow()
         {
             _messageWindowImageHandle = ImagePool.Load("message_window.png");
             _waitClickImageHandle = ImagePool.LoadDiv("wait_click.png", 4,1);
             _message = new WrappedText(20, 150, 560, 980);
             Name = "";
+            MessageQueue = new Queue<string>();
         }
         
         public bool Update()
@@ -88,6 +93,12 @@ namespace CSharpNovel2.Game
         {
             if (MessageQueue.Count <= 0) return false;
             Message = MessageQueue.Dequeue();
+            return true;
+        }
+
+        public bool AddMessage(string message)
+        {
+            MessageQueue.Enqueue(message);
             return true;
         }
     }

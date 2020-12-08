@@ -1,5 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c33e08ea_002D85c0_002D41b0_002D8d83_002D18a5f8dd841a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestParseTag" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4514d190_002Dc0ff_002D4ea8_002D851f_002Dfb14ed6fc7a0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestParseProgram1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseProgram1&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c33e08ea_002D85c0_002D41b0_002D8d83_002D18a5f8dd841a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestParseTag" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseTag&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::89840670-96ED-4BB8-BC7D-B337D7738979::.NETCoreApp,Version=v3.1::FlashScriptTest.Tests.TestParseLines&lt;/TestId&gt;

@@ -10,6 +10,7 @@ namespace CSharpNovel2
     {
         public static void Print(SDL.SDL_Rect dist, string text, int size, SDL.SDL_Color color)
         {
+            if (text == "") return;
             var font = GameCore.GetFont(size);
             var image = SDL_ttf.TTF_RenderUTF8_Blended(font, text, color);
             var texture = SDL.SDL_CreateTextureFromSurface(GameCore.Renderer, image);
@@ -20,6 +21,7 @@ namespace CSharpNovel2
         
         public static void Print(int x, int y, string text, int size, SDL.SDL_Color color)
         {
+            if (text == "") return;
             var font = GameCore.GetFont(size);
             var image = SDL_ttf.TTF_RenderUTF8_Blended(font, text, color);
             var imageSurf = Marshal.PtrToStructure<SDL.SDL_Surface>(image);
@@ -32,6 +34,7 @@ namespace CSharpNovel2
 
         public static void PrintClip(int x, int y, SDL.SDL_Rect clip, string text, int size, SDL.SDL_Color color)
         {
+            if (text == "") return;
             var font = GameCore.GetFont(size);
             var image = SDL_ttf.TTF_RenderUTF8_Blended(font, text, color);
             var imageSurf = Marshal.PtrToStructure<SDL.SDL_Surface>(image);
@@ -44,6 +47,7 @@ namespace CSharpNovel2
 
         public static void PrintWrap(int x, int y, uint wrapLen, string text, int size, SDL.SDL_Color color)
         {
+            if (text == "") return;
             var font = GameCore.GetFont(size);
             var image = SDL_ttf.TTF_RenderUTF8_Blended_Wrapped(font, text, color, wrapLen);
             var imageSurf = Marshal.PtrToStructure<SDL.SDL_Surface>(image);

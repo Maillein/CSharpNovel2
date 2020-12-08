@@ -27,6 +27,7 @@
         </e>
         <e p="Define.cs" t="Include" />
         <e p="Game" t="Include">
+          <e p="Executor.cs" t="Include" />
           <e p="GameScene.cs" t="Include" />
           <e p="MessageWindow.cs" t="Include" />
           <e p="Parser.cs" t="Include" />
@@ -45,6 +46,35 @@
           <e p="ImagePool.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
+        <e p="Publish" t="Include">
+          <e p="CSharpNovel2" t="Include" />
+          <e p="CSharpNovel2.deps.json" t="Include" />
+          <e p="CSharpNovel2.dll" t="Include" />
+          <e p="CSharpNovel2.pdb" t="Include" />
+          <e p="CSharpNovel2.runtimeconfig.json" t="Include" />
+          <e p="FlashScript" t="Include" />
+          <e p="FlashScript.dll" t="Include" />
+          <e p="FlashScript.pdb" t="Include" />
+          <e p="Sprache.dll" t="Include" />
+          <e p="media" t="Include">
+            <e p="._.DS_Store" t="Include" />
+            <e p="fonts" t="Include">
+              <e p="Ricty-Regular.ttf" t="Include" />
+              <e p="rounded-mgenplus-1c-regular.ttf" t="Include" />
+            </e>
+            <e p="images" t="Include">
+              <e p="default_background.png" t="Include" />
+              <e p="dialog_window.png" t="Include" />
+              <e p="message_window.png" t="Include" />
+              <e p="title_menu_mask.png" t="Include" />
+              <e p="wait_click.png" t="Include" />
+              <e p="window_gray_mask.png" t="Include" />
+            </e>
+            <e p="scripts" t="Include">
+              <e p="scenario.fbs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Scene" t="Include">
           <e p="IOnSceneChangeListener.cs" t="Include" />
           <e p="Parameter.cs" t="Include" />
