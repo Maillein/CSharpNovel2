@@ -34,7 +34,7 @@ namespace CSharpNovel2.Game
         
         public override bool Update()
         {
-            if (_messageWindow.IsClicked())
+            if (_messageWindow.IsClicked() && !_messageWindow.IsShowing)
             {
                 Next();
             }

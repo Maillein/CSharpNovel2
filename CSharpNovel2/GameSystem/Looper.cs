@@ -5,6 +5,7 @@ using CSharpNovel2.Game;
 using CSharpNovel2.Scene;
 using CSharpNovel2.System;
 using CSharpNovel2.Title;
+using SDL2;
 
 namespace CSharpNovel2.GameSystem
 {
@@ -21,6 +22,7 @@ namespace CSharpNovel2.GameSystem
 
         public bool Loop()
         {
+            GameCore.SetViewport();
             Keyboard.Update();
             Mouse.Update();
             var ret = _sceneStack.Peek().Update();
@@ -32,6 +34,7 @@ namespace CSharpNovel2.GameSystem
 
         public void RenderOnly()
         {
+            GameCore.SetViewport();
             Keyboard.Update();
             Mouse.Update();
             _sceneStack.Peek().Render();
@@ -48,13 +51,13 @@ namespace CSharpNovel2.GameSystem
 
             switch (scene)
             {
-                case EScene.Title:
+                case EScene.TITLE:
                     _sceneStack.Push(new TitleScene(this, parameter));
                     break;
-                case EScene.Game:
+                case EScene.GAME:
                     _sceneStack.Push(new GameScene(this, parameter));
                     break;
-                case EScene.Config:
+                case EScene.CONFIG:
                     _sceneStack.Push(new ConfigScene(this, parameter));
                     break;
                 default:

@@ -14,6 +14,10 @@ namespace CSharpNovel2
             var font = GameCore.GetFont(size);
             var image = SDL_ttf.TTF_RenderUTF8_Blended(font, text, color);
             var texture = SDL.SDL_CreateTextureFromSurface(GameCore.Renderer, image);
+            dist.x *= GameCore.ViewportRect.w / 1280;
+            dist.y *= GameCore.ViewportRect.h / 720;
+            dist.w *= GameCore.ViewportRect.w / 1280;
+            dist.h *= GameCore.ViewportRect.h / 720;
             SDL.SDL_RenderCopy(GameCore.Renderer, texture, IntPtr.Zero, ref dist);
             SDL.SDL_FreeSurface(image);
             SDL.SDL_DestroyTexture(texture);
@@ -27,6 +31,10 @@ namespace CSharpNovel2
             var imageSurf = Marshal.PtrToStructure<SDL.SDL_Surface>(image);
             var texture = SDL.SDL_CreateTextureFromSurface(GameCore.Renderer, image);
             var dist = new SDL.SDL_Rect {x = x, y = y, w = imageSurf.clip_rect.w, h = imageSurf.clip_rect.h};
+            dist.x *= GameCore.ViewportRect.w / 1280;
+            dist.y *= GameCore.ViewportRect.h / 720;
+            dist.w *= GameCore.ViewportRect.w / 1280;
+            dist.h *= GameCore.ViewportRect.h / 720;
             SDL.SDL_RenderCopy(GameCore.Renderer, texture, IntPtr.Zero, ref dist);
             SDL.SDL_FreeSurface(image);
             SDL.SDL_DestroyTexture(texture);
@@ -40,6 +48,10 @@ namespace CSharpNovel2
             var imageSurf = Marshal.PtrToStructure<SDL.SDL_Surface>(image);
             var texture = SDL.SDL_CreateTextureFromSurface(GameCore.Renderer, image);
             var dist = new SDL.SDL_Rect {x = x, y = y, w = imageSurf.clip_rect.w, h = imageSurf.clip_rect.h};
+            dist.x *= GameCore.ViewportRect.w / 1280;
+            dist.y *= GameCore.ViewportRect.h / 720;
+            dist.w *= GameCore.ViewportRect.w / 1280;
+            dist.h *= GameCore.ViewportRect.h / 720;
             SDL.SDL_RenderCopy(GameCore.Renderer, texture, ref clip, ref dist);
             SDL.SDL_FreeSurface(image);
             SDL.SDL_DestroyTexture(texture);
@@ -53,6 +65,10 @@ namespace CSharpNovel2
             var imageSurf = Marshal.PtrToStructure<SDL.SDL_Surface>(image);
             var texture = SDL.SDL_CreateTextureFromSurface(GameCore.Renderer, image);
             var dist = new SDL.SDL_Rect {x = x, y = y, w = imageSurf.clip_rect.w, h = imageSurf.clip_rect.h};
+            dist.x *= GameCore.ViewportRect.w / 1280;
+            dist.y *= GameCore.ViewportRect.h / 720;
+            dist.w *= GameCore.ViewportRect.w / 1280;
+            dist.h *= GameCore.ViewportRect.h / 720;
             SDL.SDL_RenderCopy(GameCore.Renderer, texture, IntPtr.Zero, ref dist);
             SDL.SDL_FreeSurface(image);
             SDL.SDL_DestroyTexture(texture);

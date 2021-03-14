@@ -21,22 +21,24 @@ namespace CSharpNovel2.Game
             {
                 switch (expr.Type)
                 {
-                    case Type.MString:
+                    case Type.M_STRING:
                         break;
-                    case Type.MInt:
+                    case Type.M_INT:
                         break;
-                    case Type.MDecimal:
+                    case Type.M_DECIMAL:
                         break;
-                    case Type.Label:
+                    case Type.LABEL:
+                        Label(expr as Label);
                         break;
-                    case Type.Lines:
+                    case Type.LINES:
                         Lines(expr as Lines);
                         break;
-                    case Type.Variable:
+                    case Type.VARIABLE:
                         break;
-                    case Type.Tag:
+                    case Type.TAG:
+                        Tag(expr as Tag);
                         break;
-                    case Type.TagArg:
+                    case Type.TAG_ARG:
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -44,9 +46,29 @@ namespace CSharpNovel2.Game
             }
         }
 
+        private void Label(Label label)
+        {
+            
+        }
+        
         private void Lines(Lines lines)
         {
             _messageWindow.AddMessage(lines.Value);
+        }
+
+        private void Tag(Tag tag)
+        {
+            switch (tag.Name)
+            {
+                case "sn":
+                    var name = (tag.Args["name"] as MString)?.Value;
+                    _messageWindow.Name = name;
+                    break;
+                case "cm":
+                    _messageWindow.Message = "";
+                    Next();
+                    break;
+            }
         }
     }
 }

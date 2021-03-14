@@ -8,13 +8,14 @@ namespace CSharpNovel2.Game
 {
     public class Parser
     {
-        private Parser<Expr> _parser;
-        private Script _script;
-        private StreamReader _streamReader;
+        private readonly FileStream _fileStream;
+        private readonly StreamReader _streamReader;
+        private readonly Dictionary<string, long> _positions;
 
         public Parser(string fileName = "scenario.fbs")
         {
-            _streamReader = new StreamReader($"./media/scripts/{fileName}");
+            _fileStream = File.Open($"./media/scripts/{fileName}", FileMode.Open);
+            _streamReader = new StreamReader(_fileStream);
         }
 
         public Script ParseAll(string fileName)
@@ -28,8 +29,9 @@ namespace CSharpNovel2.Game
         {
             var line = _streamReader.ReadLine();
             if (line == null) yield break;
-            line = line.Replace("\\v", "\v");
-            line = line.Replace("\\n", "\n");
+            while (line == "") line = _streamReader.ReadLine();
+            line = line?.Replace("\\v", "\v");
+            line = line?.Replace("\\n", "\n");
             var script = ParseScript.ParseProgram.Parse(line);
             foreach (var expr in script.exprs)
             {

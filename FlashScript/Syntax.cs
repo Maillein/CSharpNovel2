@@ -6,15 +6,16 @@ namespace FlashScript
 {
     public enum Type
     {
-        MString,
-        MInt,
-        MDecimal,
-        Label,
-        Lines,
-        Variable,
-        Tag,
-        TagArg,
+        M_STRING,
+        M_INT,
+        M_DECIMAL,
+        LABEL,
+        LINES,
+        VARIABLE,
+        TAG,
+        TAG_ARG,
     }
+    
     public abstract class Expr
     {
         public int Priority { get; }
@@ -38,42 +39,42 @@ namespace FlashScript
     public class MString : Literal
     {
         public string Value { get; }
-        public MString(string value):base(Type.MString) => Value = value;
+        public MString(string value):base(Type.M_STRING) => Value = value;
         public override string ToString() => $"\"{Value}\"";
     }
 
     public class MInt : Literal
     {
         public long Value { get; }
-        public MInt(long value):base(Type.MInt) => Value = value;
+        public MInt(long value):base(Type.M_INT) => Value = value;
         public override string ToString() => Value.ToString();
     }
 
     public class MDecimal : Literal
     {
         public double Value { get; }
-        public MDecimal(double value):base(Type.MDecimal) => Value = value;
+        public MDecimal(double value):base(Type.M_DECIMAL) => Value = value;
         public override string ToString() => Value.ToString();
     }
 
     public class Label: Literal 
     {
         public string Value { get; }
-        public Label(string value):base(Type.Label) => Value = value;
+        public Label(string value):base(Type.LABEL) => Value = value;
         public override string ToString() => $"*{Value}";
     }
 
     public class Lines : Literal
     {
         public string Value { get; }
-        public Lines(string value):base(Type.Lines) => Value = value;
+        public Lines(string value):base(Type.LINES) => Value = value;
         public override string ToString() => $"「{Value}」";
     }
 
     public class Variable : Expr 
     {
         public string Name { get; }
-        public Variable(string name):base(0, Type.Variable) => Name = name;
+        public Variable(string name):base(0, Type.VARIABLE) => Name = name;
         public override string ToString() => "$" + Name;
     }
     
@@ -82,7 +83,7 @@ namespace FlashScript
         public string Name { get; }
         public Dictionary<string, Expr> Args { get; } = new Dictionary<string, Expr>();
 
-        public Tag(string name, IEnumerable<Expr> args) : base(0, Type.Tag)
+        public Tag(string name, IEnumerable<Expr> args) : base(0, Type.TAG)
         {
             Name = name;
             if (args == null)
@@ -115,7 +116,7 @@ namespace FlashScript
         public string Key { get; }
         public Expr Value { get; }
 
-        public TagArg(string key, Expr value) : base(0, Type.TagArg) => (Key, Value) = (key, value);
+        public TagArg(string key, Expr value) : base(0, Type.TAG_ARG) => (Key, Value) = (key, value);
     }
 
     public class Script

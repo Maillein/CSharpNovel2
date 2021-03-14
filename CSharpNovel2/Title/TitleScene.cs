@@ -20,14 +20,14 @@ namespace CSharpNovel2.Title
             // Console.WriteLine("Start was clicked.");
             var parameter = new Parameter();
             parameter.Set("key", 123);
-            implSceneChanged.OnSceneChanged(EScene.Game, parameter, true);
+            implSceneChanged.OnSceneChanged(EScene.GAME, parameter, true);
             Free();
             return true;
         }
 
         private bool OnConfigClick()
         {
-            implSceneChanged.OnSceneChanged(EScene.Config, new Parameter(), false);
+            implSceneChanged.OnSceneChanged(EScene.CONFIG, new Parameter(), false);
             return true;
         }
 

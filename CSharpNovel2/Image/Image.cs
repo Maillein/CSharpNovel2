@@ -38,13 +38,21 @@ namespace CSharpNovel2.Image
         public int Render(int x, int y)
         {
             var srcrect = new SDL.SDL_Rect {x = 0, y = 0, w = _width, h = _height};
-            var dstrect = new SDL.SDL_Rect {x = x, y = y, w = _width, h = _height};
+            var dstrect = new SDL.SDL_Rect
+            {
+                x = x * GameCore.ViewportRect.w / 1280, y = y * GameCore.ViewportRect.h / 720,
+                w = _width * GameCore.ViewportRect.w / 1280, h = _height * GameCore.ViewportRect.h / 720
+            };
             return SDL.SDL_RenderCopy(GameCore.Renderer, _texture, ref srcrect, ref dstrect);
         }
 
         public int RenderClip(int x, int y, SDL.SDL_Rect srcrect)
         {
-            var dstrect = new SDL.SDL_Rect {x = x, y = y, w = srcrect.w, h = srcrect.h};
+            var dstrect = new SDL.SDL_Rect
+            {
+                x = x * GameCore.ViewportRect.w / 1280, y = y * GameCore.ViewportRect.h / 720,
+                w = srcrect.w * GameCore.ViewportRect.w / 1280, h = srcrect.h * GameCore.ViewportRect.h / 720
+            };
             return SDL.SDL_RenderCopy(GameCore.Renderer, _texture, ref srcrect, ref dstrect);
         }
 

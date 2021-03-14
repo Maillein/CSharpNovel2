@@ -8,10 +8,12 @@ namespace CSharpNovel2.GameSystem
 {
     public static class GameCore
     {
-        private static IntPtr Window { get; set; } = IntPtr.Zero;
-        public static IntPtr Renderer { get; private set; } = IntPtr.Zero;
+        public static IntPtr Window { get; set; } = IntPtr.Zero;
+        public static IntPtr Renderer { get; set; } = IntPtr.Zero;
 
         public static SDL.SDL_Event GameEvent = new SDL.SDL_Event();
+
+        public static SDL.SDL_Rect ViewportRect;
 
         public static ulong FrameCount { get; set; } = 0;
 
@@ -43,6 +45,28 @@ namespace CSharpNovel2.GameSystem
             return size;
         }
 
+        public static void SetViewport()
+        {
+            SDL.SDL_GetWindowSize(GameCore.Window, out var w, out var h);
+            if (w * 9 > h * 16) // 画面が横長
+            {
+                ViewportRect.x = (w - h * 16 / 9) / 2;
+                ViewportRect.y = 0;
+                ViewportRect.w = h * 16 / 9;
+                ViewportRect.h = h;
+            }
+            else
+            {
+                var r = new SDL.SDL_Rect {x = 0, y = (h - w * 9 / 16) / 2, w = w, h = w * 9 / 16};
+                ViewportRect.x = 0;
+                ViewportRect.y = (h - w * 9 / 16) / 2;
+                ViewportRect.w = w;
+                ViewportRect.h = w * 9 / 16;
+            }
+            SDL.SDL_RenderSetViewport(Renderer, ref ViewportRect);
+        }
+
+        
         public static bool Initialize()
         {
             if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) < 0)
@@ -54,7 +78,7 @@ namespace CSharpNovel2.GameSystem
             // Console.WriteLine("SDL was initialized.");
 
             Window = SDL.SDL_CreateWindow("Title", SDL.SDL_WINDOWPOS_CENTERED, SDL.SDL_WINDOWPOS_CENTERED,
-                Define.WindowWidth, Define.WindowHeight, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
+                Define.WindowWidth, Define.WindowHeight, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN | SDL.SDL_WindowFlags.SDL_WINDOW_RESIZABLE);
 
             if (Window == IntPtr.Zero)
             {
@@ -109,6 +133,8 @@ namespace CSharpNovel2.GameSystem
         {
             SDL.SDL_DestroyRenderer(Renderer);
             SDL.SDL_DestroyWindow(Window);
+            SDL_image.IMG_Quit();
+            SDL_ttf.TTF_Quit();
             SDL.SDL_Quit();
         }
     }

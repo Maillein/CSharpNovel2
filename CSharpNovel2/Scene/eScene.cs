@@ -2,8 +2,8 @@
 {
     public enum EScene
     {
-        Title,
-        Game,
-        Config,
+        TITLE,
+        GAME,
+        CONFIG,
     }
 }
